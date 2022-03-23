@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
@@ -57,9 +58,12 @@ class ProductController extends Controller
         $product->title=$request->title;
         $product->detail=$request->detail;
         $product->price=$request->price;
+        
         $product->save();
+
+        dd($product);
       
-        return back()->with('success','Product Updated Successfully');
+        return back()->with('success','Product Added Successfully');
     }
 
     /**
@@ -115,6 +119,7 @@ class ProductController extends Controller
         $product->price=$request->price;
         $product->update();
       
+        return Redirect::route('products.edit');
         return back()->with('success','Product Updated Successfully');
        
     }
