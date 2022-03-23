@@ -90,7 +90,7 @@ setup (){
   })
 
   function submit(){
-    Inertia.post(route('products.store'),form)
+    Inertia.post(route('products.store'))
   }
 
   return { form,submit}
